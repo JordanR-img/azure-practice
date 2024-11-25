@@ -1,0 +1,39 @@
+name: Deploy infrastructure
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Environment to run on
+        options:
+        - dev
+        - prod
+      terraform_destroy:
+        type: boolean
+
+
+jobs:
+  TerraformPlan:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+    - name: Checkout repo
+      run: actions/checkout@v4
+    - name: Terraform init
+      run: terraform init
+    - name: Terraform Plan
+      if: inputs.terraform_destroy == false
+      run: terraform plan 
+    - name: Terraform Plan Destroy
+      if: inputs.terraform_destroy == true
+      run: terraform plan --destroy
+      
+  TerraformApply:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps: 
+    - name: Terraform Apply
+      run: terraform apply
