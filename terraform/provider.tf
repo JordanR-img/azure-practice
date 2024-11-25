@@ -3,6 +3,7 @@ terraform {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "~>3.0"
+      use_oidc = true
     }
   }
   backend "azurerm" {
@@ -10,6 +11,7 @@ terraform {
       storage_account_name = "tfstatetesting"
       container_name       = "tfstate"
       key                  = "terraform.tfstate"
+      use_oidc = true
   }
 
 }
