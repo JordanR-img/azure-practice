@@ -3,7 +3,6 @@ terraform {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "~>3.0"
-      use_oidc = true
     }
   }
   backend "azurerm" {
@@ -18,4 +17,5 @@ terraform {
 
 provider "azurerm" {
   features {}
+  use_oidc = true
 }
