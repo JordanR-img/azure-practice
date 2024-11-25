@@ -22,7 +22,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
     - name: Switch directory
-      run: cd /terraform
+      run: ls
     - name: PWD
       run: pwd 
     - name: Terraform init
