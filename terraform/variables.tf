@@ -17,11 +17,9 @@ variable "app_registration_name" {
 variable "tenant_id" {
   type        = string
   description = "tenant_id for OIDC"
-  default     = data.azuread_client_config.current.tenant_id
 }
 
 variable "client_id" {
   type        = string
   description = "client_id for OIDC"
-  default     = data.azuread_client_config.current.client_id
 }
