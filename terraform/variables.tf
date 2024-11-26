@@ -13,13 +13,3 @@ variable "app_registration_name" {
   type        = string
   description = "App registration name"
 }
-
-variable "tenant_id" {
-  type        = string
-  description = "tenant_id for OIDC"
-}
-
-variable "client_id" {
-  type        = string
-  description = "client_id for OIDC"
-}
