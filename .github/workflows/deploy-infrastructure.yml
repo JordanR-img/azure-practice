@@ -11,9 +11,6 @@ on:
         - prod
       terraform_destroy:
         type: boolean
-  push:
-    branches:
-      - main
 
 
 jobs:
