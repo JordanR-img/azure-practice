@@ -11,7 +11,7 @@ on:
         - prod
       terraform_destroy:
         type: boolean
-        
+
 permissions:
   id-token: write
   contents: read
@@ -45,9 +45,13 @@ jobs:
         terraform init
     - name: Terraform Plan
       if: inputs.terraform_destroy == false
+      env:
+        ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID }}
+        ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       run: |
         cd terraform
-        terraform plan -out tf.plan
+        terraform plan --var-file="dev.tfvars" -out tf.plan
     - name: Terraform Plan Destroy
       if: inputs.terraform_destroy == true
       run: |
