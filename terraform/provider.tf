@@ -10,13 +10,11 @@ terraform {
       storage_account_name = "tfstatetesting"
       container_name       = "tfstate"
       key                  = "terraform.tfstate"
-      use_oidc = true
+      use_oidc             = true
+      tenant_id            = "134721f3-68ee-4ce1-8951-57e0578ab41a"
   }
-
 }
 
 provider "azurerm" {
   features {}
-  client_id       = vars.client_id
-  tenant_id       = vars.tenant_id
 }
