@@ -23,7 +23,6 @@ jobs:
       id-token: write
       contents: read
     environment: ${{ inputs.environment }}
-################################################# TODO: MAKE SURE ADD CONTRIBUTOR TO APP REGISTRATION BEFORE RUNNING WORKFLOW
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
@@ -51,7 +50,7 @@ jobs:
         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       run: |
         cd terraform
-        terraform plan --var-file="dev.tfvars" -out tf.plan
+        terraform plan --var-file="${{ inputs.environment }}.tfvars" -out tf.plan
     - name: Terraform Plan Destroy
       if: inputs.terraform_destroy == true
       run: |
