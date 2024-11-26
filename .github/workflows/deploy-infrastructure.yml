@@ -11,7 +11,10 @@ on:
         - prod
       terraform_destroy:
         type: boolean
-
+        
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   TerraformPlan:
