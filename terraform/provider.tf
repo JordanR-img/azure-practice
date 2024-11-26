@@ -17,4 +17,6 @@ terraform {
 
 provider "azurerm" {
   features {}
+  client_id       = vars.client_id
+  tenant_id       = vars.tenant_id
 }
