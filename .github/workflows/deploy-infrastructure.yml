@@ -58,7 +58,7 @@ jobs:
       if: inputs.terraform_destroy == true
       run: |
         cd terraform
-        terraform plan --destroy -out=tf.plan
+        terraform plan --var-file="${{ inputs.environment }}.tfvars" --destroy -out=tf.plan
 
     - name: Upload tf plan
       uses: actions/upload-artifact@v4
@@ -85,5 +85,9 @@ jobs:
       with:
         name: tf.plan
     - name: Terraform Apply
+      env:
+        ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       run: |
         terraform apply ./tf.plan
