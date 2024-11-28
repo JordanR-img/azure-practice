@@ -61,7 +61,9 @@ jobs:
         terraform plan --destroy -out=tf.plan
     
     - name: check file location
-      run: ls
+      run: |
+        cd terraform
+        ls
 
     - name: Upload tf plan
       uses: actions/upload-artifact@v4
