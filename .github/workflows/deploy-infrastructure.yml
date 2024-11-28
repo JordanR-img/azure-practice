@@ -87,4 +87,4 @@ jobs:
     - name: Terraform Apply
       run: |
         cd terraform
-        terraform apply ${{ env.PLAN_PATH }}
+        terraform apply ./tf.plan
