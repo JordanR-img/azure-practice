@@ -72,8 +72,8 @@ jobs:
     environment: ${{ inputs.environment }}
 
     steps: 
-    - name: Checkout repo
-      uses: actions/checkout@v4
+    # - name: Checkout repo
+    #   uses: actions/checkout@v4
     - name: Log into Azure
       uses: azure/login@v2
       with:
