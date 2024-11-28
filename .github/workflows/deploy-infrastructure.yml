@@ -126,5 +126,4 @@ jobs:
         ls
         echo "testing ls -l"
         ls ./terraform/
-        cd terraform
         terraform apply ./tf.plan
