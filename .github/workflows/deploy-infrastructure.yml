@@ -50,8 +50,6 @@ jobs:
       run: |
         cd terraform
         terraform plan --var-file="${{ inputs.environment }}.tfvars" -out=tf.plan
-        echo "testing ls"
-        ls
     - name: Terraform Plan Destroy
       env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
@@ -61,7 +59,6 @@ jobs:
       run: |
         cd terraform
         terraform plan --var-file="${{ inputs.environment }}.tfvars" --destroy -out=tf.plan
-
     - name: Upload tf plan
       uses: actions/upload-artifact@v4
       with:
