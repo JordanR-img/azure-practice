@@ -87,4 +87,5 @@ jobs:
     - name: Terraform Apply
       run: |
         cd terraform
+        ls
         terraform apply ./tf.plan
