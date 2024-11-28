@@ -126,4 +126,7 @@ jobs:
         ls
         echo "testing ls -l"
         ls ./terraform/
+        cp /tf.plan /terraform/
+        ls ./terraform/
+        cd ./terraform
         terraform apply ./tf.plan
