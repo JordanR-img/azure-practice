@@ -71,6 +71,6 @@ jobs:
     steps: 
     - name: Terraform Apply
       run: |
-        ls
-        cd terraform
+        # ls
+        # cd terraform
         terraform apply tf.plan
