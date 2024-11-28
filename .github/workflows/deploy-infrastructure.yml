@@ -29,6 +29,14 @@ jobs:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        
+    - name: Cache Terraform dependencies
+      uses: actions/cache@v3
+      with:
+        path: terraform/.terraform
+        key: ${{ runner.os }}-terraform-${{ inputs.environment }}-${{ hashFiles('terraform/**/*.tf', 'terraform/**/*.tfvars') }}
+        restore-keys: |
+          ${{ runner.os }}-terraform-${{ inputs.environment }}-
     - name: Terraform init
       env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
@@ -72,8 +80,8 @@ jobs:
     environment: ${{ inputs.environment }}
 
     steps: 
-    # - name: Checkout repo
-    #   uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
     - name: Log into Azure
       uses: azure/login@v2
       with:
@@ -84,6 +92,14 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: tf.plan
+
+    - name: Restore Terraform dependencies
+      uses: actions/cache@v3
+      with:
+        path: terraform/.terraform
+        key: ${{ runner.os }}-terraform-${{ inputs.environment }}-${{ hashFiles('terraform/**/*.tf', 'terraform/**/*.tfvars') }}
+        restore-keys: |
+          ${{ runner.os }}-terraform-${{ inputs.environment }}-
 
     - name: Terraform init
       env:
