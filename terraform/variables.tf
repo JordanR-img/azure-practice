@@ -14,7 +14,7 @@ variable "app_registration_name" {
   description = "App registration name"
 }
 
-variable "ssh_pub_key" {
+variable "ssh_pub" {
   description = "SSH pub key for vm auth"
   type        = string
   sensitive   = true
