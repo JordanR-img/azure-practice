@@ -38,7 +38,7 @@ resource "azurerm_linux_virtual_machine" "virtual_machine" {
   name                = "virtual-machine"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  size                = var.virtual_machine_size
+  size                = "Standard_F2"
   admin_username      = "adminuser"
   network_interface_ids = [
     azurerm_network_interface.nic.id,
@@ -50,7 +50,7 @@ resource "azurerm_linux_virtual_machine" "virtual_machine" {
 
   os_disk {
     caching              = "ReadWrite"
-    storage_account_type = var.storage_account_type
+    storage_account_type = "Standard_LRS"
   }
 
   source_image_reference {
