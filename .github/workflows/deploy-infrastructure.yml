@@ -47,7 +47,7 @@ jobs:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        SSH_PUB_KEY: ${{secrets.VM_SSH_PUB}}
+        SSH_PUB: ${{secrets.VM_SSH_PUB}}
       run: |
         cd terraform
         terraform plan --var-file="${{ inputs.environment }}.tfvars" -out=tf.plan
@@ -103,7 +103,7 @@ jobs:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        SSH_PUB_KEY: ${{secrets.VM_SSH_PUB}}
+        SSH_PUB: ${{secrets.VM_SSH_PUB}}
       run: |
         cp ./tf.plan ./terraform/
         cd ./terraform
