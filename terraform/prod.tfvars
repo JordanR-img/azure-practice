@@ -1,3 +1,5 @@
 resource_group_name = "prod_resource_group"
 app_registration_name = "prod_app_registration"
 resource_group_location = "australiaeast"
+virtual_machine_size = "Standard_F2"
+storage_account_type = "Standard_LRS"
