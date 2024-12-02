@@ -22,7 +22,7 @@ variable "ssh_pub" {
 
 variable "ip" {
   description = "IP used for access through NSG"
-  type        = string
+  type        = number
   sensitive   = true
 }
 
