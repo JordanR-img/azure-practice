@@ -60,3 +60,21 @@ resource "azurerm_linux_virtual_machine" "virtual_machine" {
     version   = "latest"
   }
 }
+
+resource "azurerm_network_security_group" "test_nsg_group" {
+  name                = var.nsg_group_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+
+  security_rule {
+    name                       = "test_only_allow_ssh"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = var.ip/32
+    destination_address_prefix = azurerm_subnet.subnet.address_prefixes
+  }
+}

@@ -19,3 +19,14 @@ variable "ssh_pub" {
   type        = string
   sensitive   = true
 }
+
+variable "ip" {
+  description = "IP used for access through NSG"
+  type        = string
+  sensitive   = true
+}
+
+variable "nsg_group_name" {
+  description = "nsg group name"
+  type        = string
+}
