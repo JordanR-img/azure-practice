@@ -47,7 +47,7 @@ jobs:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        TF_VAR_ssh_pub: ${{secrets.VM_SSH_PUB}}
+        TF_VAR_ssh_pub: ${{secrets.VM_SSH}}
         TF_VAR_ip: ${{ secrets.IP }}
       run: |
         cd terraform
@@ -57,7 +57,7 @@ jobs:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        TF_VAR_ssh_pub: ${{secrets.VM_SSH_PUB}}
+        TF_VAR_ssh_pub: ${{secrets.VM_SSH}}
         TF_VAR_ip: ${{ secrets.IP }}
       if: inputs.terraform_destroy == true
       run: |
@@ -105,7 +105,7 @@ jobs:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        TF_VAR_ssh_pub: ${{secrets.VM_SSH_PUB}}
+        TF_VAR_ssh_pub: ${{secrets.VM_SSH}}
         TF_VAR_ip: ${{ secrets.IP }}
       run: |
         cp ./tf.plan ./terraform/
