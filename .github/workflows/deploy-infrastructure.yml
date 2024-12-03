@@ -29,6 +29,10 @@ jobs:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - name: Install TF version
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: "1.9.0"
     - name: Terraform init
       env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
@@ -86,7 +90,10 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: tf.plan
-
+    - name: Install TF version
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: "1.9.0"
     - name: Terraform init
       env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
