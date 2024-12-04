@@ -34,6 +34,14 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
+resource "azurerm_public_ip" "public_ip" {
+  name                = var.public_ip_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
 resource "azurerm_linux_virtual_machine" "virtual_machine" {
   name                = "virtual-machine"
   resource_group_name = azurerm_resource_group.rg.name
@@ -74,7 +82,7 @@ resource "azurerm_network_security_group" "test_nsg_group" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "${var.ip}/32"
+    source_address_prefix      = "*"
     destination_address_prefix = azurerm_subnet.subnet.address_prefixes[0]
   }
 }

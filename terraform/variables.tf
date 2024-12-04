@@ -30,3 +30,8 @@ variable "nsg_group_name" {
   description = "nsg group name"
   type        = string
 }
+
+variable "public_ip_name" {
+  description = "Public IP name"
+  type        = string
+}
