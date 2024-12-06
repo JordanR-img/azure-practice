@@ -124,6 +124,7 @@ resource "azurerm_network_interface" "jump_box_nic" {
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.jump_box_public_ip.id
+  }
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsg_subnet_association" {
