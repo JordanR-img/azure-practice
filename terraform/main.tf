@@ -123,5 +123,18 @@ resource "azurerm_network_interface" "jump_box_nic" {
     name                          = "jump_box_internal"
     subnet_id                     = azurerm_subnet.subnet.id
     private_ip_address_allocation = "Dynamic"
-  }
+    public_ip_address_id          = azurerm_public_ip.jump_box_public_ip.id
+}
+
+resource "azurerm_subnet_network_security_group_association" "nsg_subnet_association" {
+  subnet_id                 = azurerm_subnet.subnet.id
+  network_security_group_id = azurerm_network_security_group.test_nsg_group.id
+}
+
+resource "azurerm_public_ip" "jump_box_public_ip" {
+  name                = "jump-box-public-ip"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  allocation_method   = "Static"
+  sku                 = "Standard"
 }
