@@ -88,7 +88,7 @@ resource "azurerm_network_security_group" "test_nsg_group" {
 }
 
 resource "azurerm_linux_virtual_machine" "jump_box" {
-  name                = "jump_box"
+  name                = "jump-box"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   size                = "Standard_F2"
