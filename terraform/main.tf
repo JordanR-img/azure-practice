@@ -82,7 +82,7 @@ resource "azurerm_network_security_group" "test_nsg_group" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "${var.ip}/32"
+    source_address_prefix      = trimspace("${var.ip}/32")
     destination_address_prefix = azurerm_subnet.subnet.address_prefixes[0]
   }
 }
