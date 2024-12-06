@@ -75,15 +75,15 @@ resource "azurerm_network_security_group" "test_nsg_group" {
   resource_group_name = azurerm_resource_group.rg.name
 
   security_rule {
-    name                       = "test_only_allow_ssh"
+    name                       = "allow-internal-ssh"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = trimspace("${var.ip}/32")
-    destination_address_prefix = azurerm_subnet.subnet.address_prefixes[0]
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "*"
   }
 }
 
