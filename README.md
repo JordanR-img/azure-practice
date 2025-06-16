@@ -8,5 +8,5 @@ This repository contains Terraform configurations for deploying and managing inf
 - Configuration of security rules and access controls.
 - Use of variables for flexible and reusable configurations.
 - Support for multiple environments (e.g., development, production).
-- Utilising Terraform for security, capability and scalability
+- Utilising Terraform for security, usability and scalability
 - Utilising Github repository secrets for secret management 
